@@ -97,6 +97,10 @@ namespace StarterAssets
         private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
+        private int _animIDLightAttack;
+
+        // movement
+        private bool isMovementEnabled = true;
 
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
@@ -156,9 +160,13 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            JumpAndGravity();
-            GroundedCheck();
-            Move();
+            // Check if movement is enabled before allowing movement
+            if (isMovementEnabled)
+            {
+                JumpAndGravity();
+                GroundedCheck();
+                Move();
+            }
         }
 
         private void LateUpdate()
@@ -173,6 +181,7 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+            _animIDLightAttack = Animator.StringToHash("LightAttack");
         }
 
         private void GroundedCheck()
@@ -279,6 +288,26 @@ namespace StarterAssets
             }
         }
 
+        public void SetMovementEnabled(bool isEnabled)
+        {
+            isMovementEnabled = isEnabled;
+
+            // If movement is disabled, reset velocity to prevent sliding
+            if (!isEnabled)
+            {
+                _verticalVelocity = 0f;
+                _speed = 0f;
+                _animationBlend = 0f;
+
+                // If using an animator, set relevant parameters to stop animations
+                if (_hasAnimator)
+                {
+                    _animator.SetFloat(_animIDSpeed, 0f);
+                    _animator.SetFloat(_animIDMotionSpeed, 0f);
+                }
+            }
+        }
+
         private void JumpAndGravity()
         {
             if (Grounded)
@@ -347,6 +376,26 @@ namespace StarterAssets
                 _verticalVelocity += Gravity * Time.deltaTime;
             }
         }
+
+        public void PerformLightAttack()
+        {
+            if (_hasAnimator)
+            {
+                _animator.SetBool(_animIDLightAttack, true);
+            }
+        }
+
+        public void DisableLightAttackAnimation()
+        {
+            _animator.SetBool(_animIDLightAttack, false);
+        }
+
+        public float GetLightAttackAnimationLength()
+        {
+            AnimatorStateInfo state = _animator.GetCurrentAnimatorStateInfo(0);
+            return state.length;
+        }
+
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
