@@ -35,6 +35,10 @@ public class NewDetectionScript : MonoBehaviour
         direction = transform.forward;
         Debug.DrawRay(origin, direction * directionDistance, Color.red);
 
+        Debug.Log("Current Position: " + transform.position);
+        Debug.Log("Target Position: " + (hit.collider.transform.position - transform.forward * 2f));
+
+
         PlayerDetected();
 
         if (isFollowingPlayer)
@@ -55,16 +59,19 @@ public class NewDetectionScript : MonoBehaviour
             {
                 Debug.Log("Let's capture the RoboThreat!");
                 isFollowingPlayer = true;
+                FollowPlayer();
             }
             else if (hit.collider == null)
             {
                 Debug.Log("Continue patrolling the area.");
+                patrolScript.patroling();
             }
         }
     }
 
     void FollowPlayer()
     {
+        Debug.Log("Entered Follow player script");
         // Move towards the player while maintaining a safe distance
         transform.position = Vector3.MoveTowards(transform.position, hit.collider.transform.position - transform.forward * 2f, followSpeed * Time.deltaTime);
 
