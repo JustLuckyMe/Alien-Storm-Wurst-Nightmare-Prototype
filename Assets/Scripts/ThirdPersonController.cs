@@ -381,13 +381,8 @@ namespace StarterAssets
         {
             if (_hasAnimator)
             {
-                _animator.SetBool(_animIDLightAttack, true);
+                _animator.SetTrigger(_animIDLightAttack);
             }
-        }
-
-        public void DisableLightAttackAnimation()
-        {
-            _animator.SetBool(_animIDLightAttack, false);
         }
 
         public float GetLightAttackAnimationLength()

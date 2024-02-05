@@ -615,6 +615,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1164582989}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &908751351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544,
+    type: 3}
+  m_PrefabInstance: {fileID: 1164582989}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e54e5a728a9234ab24fcf1460ed8a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1122738547
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,6 +814,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerArmature
       objectReference: {fileID: 0}
+    - target: {fileID: 5671933334329139779, guid: 64dce48905ffd9b4293e595fa6941544,
+        type: 3}
+      propertyPath: Controller
+      value: 
+      objectReference: {fileID: 908751351}
     m_RemovedComponents:
     - {fileID: 5885216827943657505, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
@@ -817,8 +834,6 @@ GameObject:
   - component: {fileID: 1410428754}
   - component: {fileID: 1410428753}
   - component: {fileID: 1410428752}
-  - component: {fileID: 1410428757}
-  - component: {fileID: 1410428756}
   - component: {fileID: 1410428758}
   m_Layer: 8
   m_Name: Enemy
@@ -905,37 +920,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1410428756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1410428750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74f559a574ca33840942fca73f389f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  patrolPoints:
-  - {fileID: 533420474}
-  - {fileID: 607833772}
---- !u!114 &1410428757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1410428750}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a342b6bfff2888349a9be853e775c4e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 4.27
-  directionDistance: 10
-  followSpeed: 5
 --- !u!143 &1410428758
 CharacterController:
   m_ObjectHideFlags: 0

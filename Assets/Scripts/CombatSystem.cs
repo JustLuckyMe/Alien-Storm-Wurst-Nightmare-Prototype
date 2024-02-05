@@ -50,8 +50,5 @@ public class CombatSystem : MonoBehaviour
 
         // Reset the cooldown flag after the cooldown duration
         isLightAttackOnCooldown = false;
-
-        // Disable the light attack animation
-        Controller.DisableLightAttackAnimation();
     }
 }
