@@ -10,6 +10,8 @@ public class CombatSystem : MonoBehaviour
     private InputAction lightAttackAction;
     private bool isLightAttackOnCooldown = false;
 
+    public bool PlayerJustAttacked;
+
     void Start()
     {
         // Create the "LightAttack" action in the new input system
@@ -31,7 +33,7 @@ public class CombatSystem : MonoBehaviour
             Controller.PerformLightAttack();
 
             // Set the cooldown flag to true
-            isLightAttackOnCooldown = true;
+            PlayerJustAttacked = true;
 
             // Start the cooldown timer based on the animation length
             float animationLength = Controller.GetLightAttackAnimationLength();
@@ -49,6 +51,6 @@ public class CombatSystem : MonoBehaviour
         yield return new WaitForSeconds(cooldownDuration);
 
         // Reset the cooldown flag after the cooldown duration
-        isLightAttackOnCooldown = false;
+        PlayerJustAttacked = false;
     }
 }
