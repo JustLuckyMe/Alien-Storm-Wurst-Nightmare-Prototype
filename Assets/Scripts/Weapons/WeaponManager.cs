@@ -3,32 +3,100 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    public List<Weapon> unlockedWeapons = new List<Weapon>();
-    private int currentWeaponIndex = 0;
+    public WeaponType currentWeaponType;
+    private GameObject currentWeapon;
 
-    // Method to switch to the next weapon
-    public void SwitchToNextWeapon()
+    [SerializeField] private Transform SpawnPoint;
+    [SerializeField] private GameObject SwordPrefab;
+    [SerializeField] private GameObject AxePrefab;
+    [SerializeField] private GameObject BowPrefab;
+
+    private void Start()
     {
-        if (unlockedWeapons.Count == 0)
-        {
-            Debug.LogWarning("No unlocked weapons available.");
-            return;
-        }
-
-        // Increment the current weapon index
-        currentWeaponIndex = (currentWeaponIndex + 1) % unlockedWeapons.Count;
-
-        // Call a method to handle switching the actual weapon in the game
-        SwitchWeaponInGame();
+        // Initialize with a default weapon
+        SwitchWeapon(WeaponType.Sword);
     }
 
-    // Method to switch the actual weapon in the game
-    private void SwitchWeaponInGame()
+    private void Update()
     {
-        // Logic to deactivate the current weapon and activate the new one
-        // You may need to handle weapon swapping logic based on your game's requirements
-        // For example, deactivating the current weapon's GameObject and activating the new one.
-        // You can also update UI to show the current weapon.
-        Debug.Log("Switching to weapon: " + unlockedWeapons[currentWeaponIndex].WeaponName);
+        // Check for a key press to switch weapons
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SwitchToNextWeapon();
+        }
+        else if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SwitchToPreviousWeapon();
+        }
+
+        // Check for a key press to attack
+        if (Input.GetMouseButtonDown(0))
+        {
+            Attack();
+        }
+    }
+
+    private void SwitchToNextWeapon()
+    {
+        int nextIndex = ((int)currentWeaponType + 1) % System.Enum.GetValues(typeof(WeaponType)).Length;
+        SwitchWeapon((WeaponType)nextIndex);
+    }
+
+
+    private void SwitchToPreviousWeapon()
+    {
+        int previousIndex = (int)currentWeaponType - 1;
+        if (previousIndex < 0)
+        {
+            previousIndex = System.Enum.GetValues(typeof(WeaponType)).Length - 1;
+        }
+
+        SwitchWeapon((WeaponType)previousIndex);
+    }
+
+    private void SwitchWeapon(WeaponType newWeaponType)
+    {
+        // Deactivate all weapons before switching
+        DeactivateAllWeapons();
+
+        // Activate the new weapon
+        ActivateWeapon(newWeaponType);
+    }
+
+    private void ActivateWeapon(WeaponType weaponType)
+    {
+        switch (weaponType)
+        {
+            case WeaponType.Sword:
+                SwordPrefab.SetActive(true);
+                currentWeapon = SwordPrefab;
+                break;
+            case WeaponType.Axe:
+                AxePrefab.SetActive(true);
+                currentWeapon = AxePrefab;
+                break;
+            case WeaponType.Bow:
+                BowPrefab.SetActive(true);
+                currentWeapon = BowPrefab;
+                break;
+            default:
+                break;
+        }
+
+        // Update the currentWeaponType
+        currentWeaponType = weaponType;
+    }
+
+    private void DeactivateAllWeapons()
+    {
+        // Deactivate all weapons
+        SwordPrefab.SetActive(false);
+        AxePrefab.SetActive(false);
+        BowPrefab.SetActive(false);
+    }
+
+    private void Attack()
+    {
+        Debug.Log("Player attacked with weapon: " + currentWeaponType);
     }
 }

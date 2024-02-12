@@ -1,16 +1,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WeaponType
+{
+    Sword,
+    Axe,
+    Bow,
+    // Add more weapon types as needed
+}
+
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private string weaponName;
-    [SerializeField] private float weaponDamage;
+    public WeaponType weaponType;
 
-    public string WeaponName => weaponName;
-    public float WeaponDamage => weaponDamage;
-
-    public void Attack()
+    public virtual void Attack()
     {
-        Debug.Log("Player hit enemy");
+        // Base implementation for attacking
+        Debug.Log($"Attacking with {weaponType}");
     }
+}
+
+public class Sword : Weapon
+{
+    // Additional properties or methods specific to the Sword
+}
+
+public class Axe : Weapon
+{
+    // Additional properties or methods specific to the Axe
+}
+
+public class Bow : Weapon
+{
+    // Additional properties or methods specific to the Bow
 }
