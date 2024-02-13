@@ -4,17 +4,29 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public Text healthText;
-    public Text energyText;
+    public int maxHearts = 4;
+    public Transform heartsParent;
+
+    public Sprite fullHeartSprite;
+    public Sprite emptyHeartSprite;
 
 
-    public void UpdateHealthUI(float health)
+    // Update the hearts based on the player's current health
+    public void UpdateHearts(int currentHealth)
     {
-        healthText.text = "Health: " + health.ToString();
+        int fullHearts = currentHealth / 1;
+
+        for (int i = 0; i < Mathf.Min(maxHearts, heartsParent.childCount); i++)
+        {
+            if (i < fullHearts)
+            {
+                heartsParent.GetChild(i).GetComponent<Image>().sprite = fullHeartSprite;
+            }
+            else
+            {
+                heartsParent.GetChild(i).GetComponent<Image>().sprite = emptyHeartSprite;
+            }
+        }
     }
 
-    public void UpdateEnergyUI(float energy)
-    {
-        energyText.text = "Energy: " + energy.ToString();
-    }
 }

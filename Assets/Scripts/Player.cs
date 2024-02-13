@@ -5,13 +5,13 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float maxHealth = 100f;
-    private float currentHealth;
+    [SerializeField] private int maxHealth = 4;
+    [SerializeField] private int currentHealth;
 
-    [SerializeField] private float maxEnergy = 100f;
-    private float currentEnergy;
+    [SerializeField] private int maxEnergy = 100;
+    [SerializeField] private int currentEnergy;
 
-    [SerializeField] private float baseDamage = 10f;
+    [SerializeField] private int baseDamage = 10;
 
     private UIManager uiManager;
 
@@ -28,6 +28,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (uiManager != null)
+        {
+            uiManager.UpdateHearts(currentHealth);
+        }
+    }
+
+
     // Player movement (animation will be separate just for convenience)
     void Move() { }
 
@@ -36,7 +45,7 @@ public class Player : MonoBehaviour
     void Jump() { }
 
 
-    public void TakeDamage(float enemyDmg)
+    public void TakeDamage(int enemyDmg)
     {
         if (currentHealth > 0)
         {
@@ -47,23 +56,23 @@ public class Player : MonoBehaviour
                 PlayerDeath();
             }
         }
+
+        // Call to update hearts when health changes
+        uiManager.UpdateHearts(currentHealth);
     }
 
-    public void GainHealth(float healthAmount)
+
+    public void GainHealth(int healthAmount)
     {
         Debug.Log("Player picked up a health pack!");
 
         if (currentHealth < maxHealth)
         {
             currentHealth += healthAmount;
-            currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
-            // UI management
-            if (uiManager != null)
-            {
-                Debug.Log("Health UI updated");
-                uiManager.UpdateHealthUI(currentHealth);
-            }
+            // Call to update hearts when health changes
+            uiManager.UpdateHearts(currentHealth);
         }
         else
         {
@@ -71,21 +80,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void GainEnergy(float energyAmount)
+    public void GainEnergy(int energyAmount)
     {
         Debug.Log("Player gained energy!");
 
         if (currentEnergy < maxEnergy)
         {
             currentEnergy += energyAmount;
-            currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy);
+            currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
 
-            // UI management
-            if (uiManager != null)
-            {
-                Debug.Log("Energy UI updated");
-                uiManager.UpdateEnergyUI(currentEnergy);
-            }
+
+
         }
         else
         {
