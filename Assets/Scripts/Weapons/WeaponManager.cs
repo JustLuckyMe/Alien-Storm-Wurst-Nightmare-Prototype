@@ -7,14 +7,19 @@ public class WeaponManager : MonoBehaviour
     private GameObject currentWeapon;
 
     [SerializeField] private Transform SpawnPoint;
-    [SerializeField] private GameObject SwordPrefab;
-    [SerializeField] private GameObject AxePrefab;
-    [SerializeField] private GameObject BowPrefab;
+    [SerializeField] private GameObject DrillPrefab;
+    [SerializeField] private GameObject HammerPrefab;
+    [SerializeField] private GameObject GunPrefab;
+
+    // bools for each weapon attack
+    private bool isDrillAttacking = false;
+    private bool isHammerAttacking = false;
+    private bool isGunAttacking = false;
 
     private void Start()
     {
         // Initialize with a default weapon
-        SwitchWeapon(WeaponType.Sword);
+        SwitchWeapon(WeaponType.Drill);
     }
 
     private void Update()
@@ -67,17 +72,17 @@ public class WeaponManager : MonoBehaviour
     {
         switch (weaponType)
         {
-            case WeaponType.Sword:
-                SwordPrefab.SetActive(true);
-                currentWeapon = SwordPrefab;
+            case WeaponType.Drill:
+                DrillPrefab.SetActive(true);
+                currentWeapon = DrillPrefab;
                 break;
-            case WeaponType.Axe:
-                AxePrefab.SetActive(true);
-                currentWeapon = AxePrefab;
+            case WeaponType.Hammer:
+                HammerPrefab.SetActive(true);
+                currentWeapon = HammerPrefab;
                 break;
-            case WeaponType.Bow:
-                BowPrefab.SetActive(true);
-                currentWeapon = BowPrefab;
+            case WeaponType.Gun:
+                GunPrefab.SetActive(true);
+                currentWeapon = GunPrefab;
                 break;
             default:
                 break;
@@ -90,13 +95,15 @@ public class WeaponManager : MonoBehaviour
     private void DeactivateAllWeapons()
     {
         // Deactivate all weapons
-        SwordPrefab.SetActive(false);
-        AxePrefab.SetActive(false);
-        BowPrefab.SetActive(false);
+        DrillPrefab.SetActive(false);
+        HammerPrefab.SetActive(false);
+        GunPrefab.SetActive(false);
     }
 
     private void Attack()
     {
         Debug.Log("Player attacked with weapon: " + currentWeaponType);
+
+
     }
 }

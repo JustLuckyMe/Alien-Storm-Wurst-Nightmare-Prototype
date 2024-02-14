@@ -88,9 +88,6 @@ public class Player : MonoBehaviour
         {
             currentEnergy += energyAmount;
             currentEnergy = Mathf.Clamp(currentEnergy, 0, maxEnergy);
-
-
-
         }
         else
         {
