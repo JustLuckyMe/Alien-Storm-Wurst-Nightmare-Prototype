@@ -1,11 +1,36 @@
-using UnityEngine;
+/*using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 using StarterAssets;
 
 public class CombatSystem : MonoBehaviour
 {
-    public ThirdPersonController Controller;
+    public Weapon weapon;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            // Delegate the attack to the current weapon
+            if (Weapon.currentWeapon != null)
+            {
+                currentWeapon.Attack();
+            }
+        }
+    }
+
+    public void PerformLightAttack()
+    {
+        if (_hasAnimator)
+        {
+            _animator.SetTrigger(_animIDLightAttack);
+        }
+    }
+}*/
+
+
+/*    public ThirdPersonController Controller;
+    public Weapon weapon;
 
     private InputAction lightAttackAction;
     private bool isLightAttackOnCooldown = false;
@@ -19,7 +44,7 @@ public class CombatSystem : MonoBehaviour
         lightAttackAction.Enable();
 
         // Subscribe to the performed event only once
-        lightAttackAction.performed += context => OnLightAttack();
+        lightAttackAction.performed += context => weapon.Attack();
     }
 
     void OnLightAttack()
@@ -52,5 +77,5 @@ public class CombatSystem : MonoBehaviour
 
         // Reset the cooldown flag after the cooldown duration
         PlayerJustAttacked = false;
-    }
-}
+    }*/
+

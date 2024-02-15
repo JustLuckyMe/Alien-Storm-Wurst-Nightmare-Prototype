@@ -49,10 +49,10 @@ ModelImporter:
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 0
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
       keepOriginalPositionXZ: 1
-      heightFromFeet: 1
+      heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
@@ -526,13 +526,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Y Bot@Mutant Punch(Clone)
+    - name: Drill(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Hips
-      parentName: Y Bot@Mutant Punch(Clone)
+      parentName: Drill(Clone)
       position: {x: 0.0008684739, y: 0.9350712, z: -0.0044326857}
       rotation: {x: -0.0022018435, y: 0.000009040312, z: 0.009463114, w: 0.99995285}
       scale: {x: 1, y: 1, z: 1}

@@ -1,20 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
+using StarterAssets;
+
 
 public class WeaponManager : MonoBehaviour
 {
-    public WeaponType currentWeaponType;
     private GameObject currentWeapon;
 
-    [SerializeField] private Transform SpawnPoint;
+    [Header("Quick Access:")]
+    [SerializeField] private Transform spawnpoint;
+
+    [Header("Weapons:")]
     [SerializeField] private GameObject DrillPrefab;
     [SerializeField] private GameObject HammerPrefab;
     [SerializeField] private GameObject GunPrefab;
 
-    // bools for each weapon attack
-    private bool isDrillAttacking = false;
-    private bool isHammerAttacking = false;
-    private bool isGunAttacking = false;
+    private enum WeaponType
+    {
+        Drill,
+        Hammer,
+        Gun
+    }
+
+    private WeaponType currentWeaponType;
 
     private void Start()
     {
@@ -35,7 +43,7 @@ public class WeaponManager : MonoBehaviour
         }
 
         // Check for a key press to attack
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.J))
         {
             Attack();
         }
@@ -46,7 +54,6 @@ public class WeaponManager : MonoBehaviour
         int nextIndex = ((int)currentWeaponType + 1) % System.Enum.GetValues(typeof(WeaponType)).Length;
         SwitchWeapon((WeaponType)nextIndex);
     }
-
 
     private void SwitchToPreviousWeapon()
     {
@@ -66,6 +73,17 @@ public class WeaponManager : MonoBehaviour
 
         // Activate the new weapon
         ActivateWeapon(newWeaponType);
+
+        // Ensure currentWeapon is not null after activation
+        if (currentWeapon != null)
+        {
+            // Update the currentWeaponType
+            currentWeaponType = newWeaponType;
+        }
+        else
+        {
+            Debug.LogError("currentWeapon is null after activation!");
+        }
     }
 
     private void ActivateWeapon(WeaponType weaponType)
@@ -90,6 +108,7 @@ public class WeaponManager : MonoBehaviour
 
         // Update the currentWeaponType
         currentWeaponType = weaponType;
+        Debug.Log("Current Weapon: " + currentWeapon);
     }
 
     private void DeactivateAllWeapons()
@@ -102,8 +121,11 @@ public class WeaponManager : MonoBehaviour
 
     private void Attack()
     {
-        Debug.Log("Player attacked with weapon: " + currentWeaponType);
-
-
+        // Check if the current weapon is valid
+        if (currentWeapon != null)
+        {
+            currentWeapon.GetComponent<Weapon>().Attack();
+        }
     }
+
 }

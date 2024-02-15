@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drill : Weapon
+public class Hammer : Weapon
 {
-
     void Start()
     {
-        weaponType = "Drill";
-        WeaponName = "Drill";
-        WeaponDamage = 25;
-        Speed = 1.5f;
-        IsAttacking = false;
+        weaponType = "Hammer";
+        WeaponName = "Hammer";
+        WeaponDamage = 50;
+        Speed = 0.5f;
+        // Note: Can hit multiple enemies in front.
     }
 
     public override IEnumerator PlayAttackAnimation()
@@ -23,7 +22,7 @@ public class Drill : Weapon
             if (Controller != null)
             {
                 Debug.Log($"Controller found: {Controller.name}");
-                Controller.PerformLightAttack();
+                Controller.PerformHammerAttack();
             }
             else
             {

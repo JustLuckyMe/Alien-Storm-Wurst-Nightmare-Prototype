@@ -97,7 +97,9 @@ namespace StarterAssets
         private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
-        private int _animIDLightAttack;
+        
+        private int _animIDLightAttack; //Drill attack
+        private int _animIDHammerAttack; //Hammer attack
 
         // movement
         private bool isMovementEnabled = true;
@@ -181,7 +183,10 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
-            _animIDLightAttack = Animator.StringToHash("LightAttack");
+
+            _animIDLightAttack = Animator.StringToHash("LightAttack"); //Drill
+            _animIDHammerAttack = Animator.StringToHash("HammerAttack"); //Hammer
+
         }
 
         private void GroundedCheck()
@@ -384,6 +389,15 @@ namespace StarterAssets
                 _animator.SetTrigger(_animIDLightAttack);
             }
         }
+
+        public void PerformHammerAttack()
+        {
+            if (_hasAnimator)
+            {
+                _animator.SetTrigger(_animIDHammerAttack);
+            }
+        }
+
 
         public float GetLightAttackAnimationLength()
         {

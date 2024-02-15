@@ -1,88 +1,59 @@
-using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+using StarterAssets;
 
-public enum WeaponType
-{
-    Drill,
-    Hammer,
-    Gun, //maybe laser?
-}
 
 public class Weapon : MonoBehaviour
 {
-    public WeaponType weaponType;
+    [Header("Weapon")]
+    public string weaponType;
     public string WeaponName;
     public int WeaponDamage;
     public float Speed;
 
-    // Add references to attack animations
-    public AnimationClip drillAttackAnimation;
-    public AnimationClip hammerAttackAnimation;
-    public AnimationClip gunAttackAnimation;
+    public string enemyTag = "Enemy";
+
+    [Header("Animation")]
+    public ThirdPersonController Controller;
+
+    public bool IsAttacking { get; set; }
 
     public virtual void Attack()
     {
-        // Play the corresponding attack animation based on weapon type
-        switch (weaponType)
+        StartCoroutine(PlayAttackAnimation());
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(enemyTag))
         {
-            case WeaponType.Drill:
-                StartCoroutine(PlayAnimation(drillAttackAnimation));
-                break;
-            case WeaponType.Hammer:
-                StartCoroutine(PlayAnimation(hammerAttackAnimation));
-                break;
-            case WeaponType.Gun:
-                StartCoroutine(PlayAnimation(gunAttackAnimation));
-                break;
-            default:
-                break;
+            Enemy enemy = other.GetComponent<Enemy>();
+            Debug.Log("Touched an enemy");
+            enemy.RecieveDamage(WeaponDamage);
         }
-
-        // Base implementation for attacking
-        Debug.Log($"Attacking with {WeaponName}");
     }
 
-    private IEnumerator PlayAnimation(AnimationClip animationClip)
+    public virtual IEnumerator PlayAttackAnimation()
     {
-        // Play the attack animation
-        // You may need to adjust this based on your animation system
-        yield return new WaitForSeconds(0.1f);  // Adjust the delay based on your animation length
-        // Play the actual animation here
-    }
-}
+        if (!IsAttacking)
+        {
+            IsAttacking = true;
 
-public class Drill : Weapon
-{
-    public Drill()
-    {
-        weaponType = WeaponType.Drill;
-        WeaponName = "Drill";
-        WeaponDamage = 25;
-        Speed = 1.5f;
-        // Note: Hits one enemy in front.
-    }
-}
+            if (Controller != null)
+            {
+                Debug.Log($"Controller found: {Controller.name}");
+                Controller.PerformLightAttack();
+            }
+            else
+            {
+                Debug.Log("No controller found");
+            }
 
-public class Hammer : Weapon
-{
-    public Hammer()
-    {
-        weaponType = WeaponType.Hammer;
-        WeaponName = "Hammer";
-        WeaponDamage = 50;
-        Speed = 0.5f; 
-        // Note: Can hit multiple enemies in front.
-    }
-}
 
-public class Gun : Weapon
-{
-    public Gun()
-    {
-        weaponType = WeaponType.Gun;
-        WeaponName = "Pew Pew";
-        WeaponDamage = 35;
-        Speed = 2f; 
-        // Note: Ranged attack. Can hit the first enemy in front.
+            Debug.Log($"{WeaponName} is attacking!");
+            yield return new WaitForSeconds(Speed);
+
+            IsAttacking = false;
+        }
     }
 }
