@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using UnityEngine;
 using StarterAssets;
 
@@ -129,3 +129,4 @@ public class WeaponManager : MonoBehaviour
     }
 
 }
+*/

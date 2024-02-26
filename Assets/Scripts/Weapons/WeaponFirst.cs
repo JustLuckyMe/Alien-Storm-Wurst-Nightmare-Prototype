@@ -1,8 +1,8 @@
-using System.Collections;
+/*using System.Collections;
 using UnityEngine;
 using StarterAssets;
 
-public class Weapon : MonoBehaviour
+public class WeaponFirst : MonoBehaviour
 {
     [Header("Weapon")]
     public string weaponType;
@@ -77,3 +77,4 @@ public class Weapon : MonoBehaviour
         }
     }
 }
+*/
