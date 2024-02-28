@@ -50,7 +50,7 @@ public class Weapon : MonoBehaviour
         {
             Enemy enemy = other.GetComponent<Enemy>();
             Debug.Log("Touched an enemy");
-            enemy.RecieveDamage(WeaponDamage);
+            enemy.ReceiveDamage(WeaponDamage);
         }
     }
 
