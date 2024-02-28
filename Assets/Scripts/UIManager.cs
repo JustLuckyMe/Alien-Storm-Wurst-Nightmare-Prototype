@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public Transform heartsParent;
 
     public Sprite fullHeartSprite;
+
     public Sprite emptyHeartSprite;
 
 

@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int maxHealth = 4;
-    [SerializeField] private int currentHealth;
+    [SerializeField] public int maxHealth = 3;
+    [SerializeField] public int currentHealth = 3;
 
     [SerializeField] private int maxEnergy = 100;
     [SerializeField] private int currentEnergy;
@@ -17,23 +17,23 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        // Find the UIManager in the scene
+        currentHealth = maxHealth;
+/*        // Find the UIManager in the scene
         uiManager = FindObjectOfType<UIManager>();
 
-        currentHealth = maxHealth;
 
         if (uiManager == null)
         {
             Debug.LogError("UIManager not found in the scene. Make sure it's present and active.");
-        }
+        }*/
     }
 
     void Update()
     {
-        if (uiManager != null)
+        /*if (uiManager != null)
         {
             uiManager.UpdateHearts(currentHealth);
-        }
+        }*/
     }
 
 
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
         }
 
         // Call to update hearts when health changes
-        uiManager.UpdateHearts(currentHealth);
+        //uiManager.UpdateHearts(currentHealth);
     }
 
 
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
             // Call to update hearts when health changes
-            uiManager.UpdateHearts(currentHealth);
+            //uiManager.UpdateHearts(currentHealth);
         }
         else
         {
