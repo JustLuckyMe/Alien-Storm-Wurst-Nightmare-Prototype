@@ -42,6 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3690251013955312459}
+  - component: {fileID: 2668706211115552879}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -65,6 +66,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2668706211115552879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4718987006396920959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf47588a4302c6645ba9f9904cb16a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 
+  WeaponName: 
+  WeaponDamage: 0
+  Speed: 0
+  enemyTag: enemy
+  Controller: {fileID: 0}
+  weaponCollider: {fileID: 0}
 --- !u!1 &4999339486959557114
 GameObject:
   m_ObjectHideFlags: 0

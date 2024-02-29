@@ -5,13 +5,13 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] public int maxHealth = 3;
-    [SerializeField] public int currentHealth = 3;
+    [SerializeField] public int maxHealth = 10;
+    [SerializeField] public int currentHealth;
 
     [SerializeField] private int maxEnergy = 100;
     [SerializeField] private int currentEnergy;
 
-    [SerializeField] private int baseDamage = 10;
+    [SerializeField] private int baseDamage = 1;
 
     private UIManager uiManager;
 

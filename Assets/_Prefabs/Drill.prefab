@@ -9,6 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2097519048492941079}
+  - component: {fileID: 3478027371369839635}
+  - component: {fileID: 1803005195615431531}
+  - component: {fileID: 9118233704877489733}
+  - component: {fileID: 2177695740024437848}
   m_Layer: 0
   m_Name: Drill
   m_TagString: Untagged
@@ -32,6 +36,76 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!111 &3478027371369839635
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6389790511409806435}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: -203655887218126122, guid: c99bb723477910245932a5bc8649b54b,
+    type: 3}
+  m_Animations:
+  - {fileID: -203655887218126122, guid: c99bb723477910245932a5bc8649b54b, type: 3}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &1803005195615431531
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6389790511409806435}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7d02081936c89414d9181e04268d2a8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9118233704877489733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6389790511409806435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372451513258a1d41829ebf33fc5955a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponType: 
+  WeaponName: 
+  WeaponDamage: 0
+  Speed: 0
+  enemyTag: Enemy
+  Controller: {fileID: 0}
+  weaponCollider: {fileID: 0}
+--- !u!65 &2177695740024437848
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6389790511409806435}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.372868, y: 0.9999998, z: 2.631721}
+  m_Center: {x: 0.18643074, y: 0.000005399759, z: 1.474337}
 --- !u!1 &8594304562128063603
 GameObject:
   m_ObjectHideFlags: 0

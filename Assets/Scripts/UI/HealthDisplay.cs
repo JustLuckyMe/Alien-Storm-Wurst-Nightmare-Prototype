@@ -22,7 +22,7 @@ public class HealthDisplay : MonoBehaviour
 
 		for (int i = 0; i < hearts.Length; i++)
 		{
-			if (i < maxHealth)
+			if (i < health)
 			{
 				hearts[i].sprite = fullHeart;
 				// hearts[i].enabled = true

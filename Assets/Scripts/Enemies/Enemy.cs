@@ -83,8 +83,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void 
-        ReceiveDamage(int WeaponDamage)
+    public void ReceiveDamage(int WeaponDamage)
     {
         if (enemyHealth > 0)
         {
@@ -97,14 +96,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    /*     void AttackPlayer()
-        {
-            // Implement the attack logic here
-            Debug.Log("Attacking Player");
-            isAttacking = true;
+    /*void AttackPlayer()
+    {
+        // Implement the attack logic here
+        Debug.Log("Attacking Player");
+        isAttacking = true;
 
-            target.GetComponent<Player>()?.TakeDamage(attackDamage);
-        } */
+        target.GetComponent<Player>()?.TakeDamage(attackDamage);
+    }*/
 
     public virtual IEnumerator PlayAttackAnimation()
     {
