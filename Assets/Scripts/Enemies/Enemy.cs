@@ -19,11 +19,11 @@ public class Enemy : MonoBehaviour
 
 
     [Header("Enemy Pathing")]
-    [SerializeField] Transform target; // The player
-    [SerializeField] protected Transform[] patrolPoints;
+    public Transform target; // The player
     [SerializeField] protected float patrolSpeed = 2.0f;
     [SerializeField] protected float detectionRange = 5f;
     [SerializeField] protected float stopDistance = 0.5f;
+    [SerializeField] protected Transform[] patrolPoints;
 
 
     private int currentPatrolIndex = 0;
