@@ -38,13 +38,6 @@ public class Weapon : MonoBehaviour
 
     public void Attack()
     {
-        // Check if the attack animation is already playing
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Mutant Punch"))
-        {
-            // Animation is still playing, don't start a new one
-            return;
-        }
-
         comboCount++;
 
         // Check if the combo count exceeds the maximum allowed
@@ -102,7 +95,7 @@ public class Weapon : MonoBehaviour
             }
             else
             {
-                Debug.Log("No controller found");
+                //Debug.Log("No controller found");
             }
 
             //Debug.Log($"{WeaponName} is attacking!");
