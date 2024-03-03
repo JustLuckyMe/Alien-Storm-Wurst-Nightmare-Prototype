@@ -97,6 +97,7 @@ public class Player : MonoBehaviour
 
     void PlayerDeath()
     {
+        Debug.Log("Player is fucking dead bro");
         // Play death animation
         // Play game over screen
     }

@@ -96,15 +96,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    /*void AttackPlayer()
-    {
-        // Implement the attack logic here
-        Debug.Log("Attacking Player");
-        isAttacking = true;
-
-        target.GetComponent<Player>()?.TakeDamage(attackDamage);
-    }*/
-
     public virtual IEnumerator PlayAttackAnimation()
     {
         if (!IsAttacking)
