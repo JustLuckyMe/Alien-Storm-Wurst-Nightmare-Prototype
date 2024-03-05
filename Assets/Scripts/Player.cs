@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
         else
         {
             Debug.Log("Player already has max energy");
-        }
+        } 
     }
 
     void PlayerDeath()

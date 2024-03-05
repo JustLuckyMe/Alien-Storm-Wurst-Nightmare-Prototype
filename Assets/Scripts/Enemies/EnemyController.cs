@@ -6,6 +6,6 @@ public class EnemyController : MonoBehaviour
 {
     public void AttackPlayerAnim()
     {
-
+        // add here the attack aniamtion of the player
     }
 }
