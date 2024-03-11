@@ -80,6 +80,7 @@ public class Enemy : MonoBehaviour
         if (distanceToPlayer > stopDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, patrolSpeed * Time.deltaTime);
+            
         }
     }
 

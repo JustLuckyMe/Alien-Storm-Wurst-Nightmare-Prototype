@@ -9,13 +9,14 @@ public class MimicAlien : Enemy
     [SerializeField] GameObject trueForm;
     [SerializeField] GameObject falseForm;
 
-
+    [Header("Attributes")]
+    private bool IsInTrueForm;
 
     private void Start()
     {
-        trueForm.SetActive(false);
-        falseForm.SetActive(true);
+        SetForm();
     }
+
     protected override void DetectAndAct()
     {
         if (target != null)
@@ -25,7 +26,20 @@ public class MimicAlien : Enemy
             {
                 trueForm.SetActive(true);
                 falseForm.SetActive(false);
+                IsInTrueForm = true;
+
+                if (IsInTrueForm)
+                {
+                    MoveTowardsPlayer();
+                }
             }
         }
+    }
+
+    private void SetForm()
+    {
+        trueForm.SetActive(false);
+        falseForm.SetActive(true);
+        IsInTrueForm = false;
     }
 }

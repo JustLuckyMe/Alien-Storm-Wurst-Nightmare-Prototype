@@ -370,6 +370,7 @@ GameObject:
   - component: {fileID: 1838751257668622670}
   - component: {fileID: 8954223188799731359}
   - component: {fileID: 6318313797796234375}
+  - component: {fileID: 2861959989243725269}
   m_Layer: 8
   m_Name: KyleTheRobot
   m_TagString: Player
@@ -665,6 +666,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &2861959989243725269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838751257668622658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479783ff3cc894643b723bcd47adf4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextFireTime: 0.2
 --- !u!1 &1974789881352286686
 GameObject:
   m_ObjectHideFlags: 0
