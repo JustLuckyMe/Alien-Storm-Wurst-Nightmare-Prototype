@@ -15,14 +15,14 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private GameObject HammerPrefab;
     [SerializeField] private GameObject GunPrefab;
 
-    private enum WeaponType
+    public enum WeaponType
     {
         Drill,
         Hammer,
         Gun
     }
 
-    private WeaponType currentWeaponType;
+    public WeaponType currentWeaponType;
 
     private void Start()
     {

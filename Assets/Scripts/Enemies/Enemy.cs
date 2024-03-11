@@ -40,11 +40,11 @@ public class Enemy : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
 
-        if (IsEnemyHit())
+        /*if (IsEnemyHit())
         {
             MoveTowardsPlayer();
-        }
-        else if (distanceToPlayer <= detectionRange)
+        }*/
+        if (distanceToPlayer <= detectionRange)
         {
             if (distanceToPlayer <= attackRange && !isAttacking)
             {

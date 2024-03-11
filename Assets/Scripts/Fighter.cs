@@ -5,45 +5,82 @@ using UnityEngine;
 public class Fighter : MonoBehaviour
 {
     private Animator anim;
+    WeaponManager weaponManager;
+    WeaponManager.WeaponType weaponType;
+
+
     public float nextFireTime = 2f;
     public static int noOfClicks = 0;
     float lastClickedTime = 0;
     float maxComboDelay = 1;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        weaponManager = GetComponent<WeaponManager>();
     }
 
     void Update()
     {
-        if (Time.time - lastClickedTime > maxComboDelay)
+        if (weaponManager.currentWeaponType == WeaponManager.WeaponType.Drill) //if weapontype is drill
         {
-            noOfClicks = 0;
+            if (Time.time - lastClickedTime > maxComboDelay)
+            {
+                noOfClicks = 0;
+            }
+
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                lastClickedTime = Time.time;
+                noOfClicks++;
+
+                if (noOfClicks == 1)
+                {
+                    anim.SetTrigger("hit1");
+                }
+                else if (noOfClicks == 2)
+                {
+                    anim.SetTrigger("hit2");
+                }
+                else if (noOfClicks == 3)
+                {
+                    anim.SetTrigger("hit3");
+                }
+
+                noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (weaponManager.currentWeaponType == WeaponManager.WeaponType.Hammer) //if weapontype is hammer
         {
-            lastClickedTime = Time.time;
-            noOfClicks++;
-
-            if (noOfClicks == 1)
+            if (Time.time - lastClickedTime > maxComboDelay)
             {
-                anim.SetBool("hit1", true);
-            }
-            else if (noOfClicks == 2)
-            {
-                anim.SetBool("hit2", true);
-            }
-            else if (noOfClicks == 3)
-            {
-                anim.SetBool("hit3", true);
+                noOfClicks = 0;
             }
 
-            noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                lastClickedTime = Time.time;
+                noOfClicks++;
+
+                if (noOfClicks == 1)
+                {
+                    anim.SetTrigger("hit1");
+                }
+                else if (noOfClicks == 2)
+                {
+                    anim.SetTrigger("hit2");
+                }
+                else if (noOfClicks == 3)
+                {
+                    anim.SetTrigger("hit3");
+                }
+
+                noOfClicks = Mathf.Clamp(noOfClicks, 0, 3);
+            }
         }
-        Debug.Log(noOfClicks);
     }
 
     /*    void OnPress()
@@ -68,37 +105,38 @@ public class Fighter : MonoBehaviour
                 anim.SetBool("hit3", true);
             }
         }*/
-    public void return1()
+   /* public void return1()
     {
-        if(noOfClicks >= 2)
+        if (noOfClicks >= 2)
         {
-            anim.SetBool("hit2", true);
+            anim.SetTrigger("hit2");
         }
         else
         {
-            anim.SetBool("hit1", false);
+            Debug.Log("Hi");
             noOfClicks = 0;
         }
+            anim.SetTrigger("hit1");
     }
 
     public void return2()
     {
         if (noOfClicks >= 3)
         {
-            anim.SetBool("hit3", true);
+            anim.SetTrigger("hit3");
         }
         else
         {
-            anim.SetBool("hit2", false);
             noOfClicks = 0;
         }
+            anim.SetTrigger("hit2");
     }
 
     public void return3()
     {
-        anim.SetBool("hit1", false);
-        anim.SetBool("hit2", false);
-        anim.SetBool("hit3", false);
+        anim.SetTrigger("hit1");
+        anim.SetTrigger("hit2");
+        anim.SetTrigger("hit3");
         noOfClicks = 0;
-    }
+    }*/
 }
