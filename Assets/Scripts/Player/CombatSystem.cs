@@ -1,20 +1,22 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fighter : MonoBehaviour
+public class CombatSystem : MonoBehaviour
 {
     private Animator anim;
     WeaponManager weaponManager;
     WeaponManager.WeaponType weaponType;
 
     //bools
-    //isDrill 
+    private bool isDrill;
+
+
     public float nextFireTime = 2f;
     public static int noOfClicks = 0;
     float lastClickedTime = 0;
     float maxComboDelay = 1;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -84,4 +86,3 @@ public class Fighter : MonoBehaviour
         }
     }
 }
-*/

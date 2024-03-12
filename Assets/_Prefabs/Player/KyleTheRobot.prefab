@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 1838751257668622670}
   - component: {fileID: 8954223188799731359}
   - component: {fileID: 6318313797796234375}
-  - component: {fileID: 2861959989243725269}
+  - component: {fileID: 8070335488011844328}
   m_Layer: 8
   m_Name: KyleTheRobot
   m_TagString: Player
@@ -645,6 +645,7 @@ MonoBehaviour:
   DrillPrefab: {fileID: 3575508902281948164}
   HammerPrefab: {fileID: 2607498514856070664}
   GunPrefab: {fileID: 2904521958019217332}
+  currentWeaponType: 0
 --- !u!114 &6318313797796234375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,7 +667,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &2861959989243725269
+--- !u!114 &8070335488011844328
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -675,10 +676,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1838751257668622658}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 479783ff3cc894643b723bcd47adf4ca, type: 3}
+  m_Script: {fileID: 11500000, guid: ddb9537169d97c5429a2ee829352e7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextFireTime: 0.2
+  nextFireTime: 2
 --- !u!1 &1974789881352286686
 GameObject:
   m_ObjectHideFlags: 0
