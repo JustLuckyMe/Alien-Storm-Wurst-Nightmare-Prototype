@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float attackRange = 1.5f; // Range within which the enemy can attack the player
     [SerializeField] protected int attackDamage = 1;
     [SerializeField] float cooldown = 4f;
-    bool IsAttacking = false;
 
     [Header("Enemy Animation")]
     public EnemyController Controller;
@@ -39,6 +38,7 @@ public class Enemy : MonoBehaviour
         if (target == null) return;
 
         float distanceToPlayer = Vector3.Distance(transform.position, target.position);
+        //Debug.Log(distanceToPlayer);
 
         /*if (IsEnemyHit())
         {
@@ -46,9 +46,10 @@ public class Enemy : MonoBehaviour
         }*/
         if (distanceToPlayer <= detectionRange)
         {
+
             if (distanceToPlayer <= attackRange && !isAttacking)
             {
-                PlayAttackAnimation();
+                StartCoroutine(PlayAttackAnimation());
             }
             else
             {
@@ -80,7 +81,7 @@ public class Enemy : MonoBehaviour
         if (distanceToPlayer > stopDistance)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, patrolSpeed * Time.deltaTime);
-            
+
         }
     }
 
@@ -99,25 +100,43 @@ public class Enemy : MonoBehaviour
 
     public virtual IEnumerator PlayAttackAnimation()
     {
-        if (!IsAttacking)
+        isAttacking = true;
+        Debug.Log("Send help");
+
+        if (Controller != null)
         {
-            IsAttacking = true;
-
-            if (Controller != null)
-            {
-                //Debug.Log($"Controller found: {Controller.name}");
-                Controller.AttackPlayerAnim();
-            }
-            else
-            {
-                Debug.Log("No controller found");
-            }
-
+            Debug.Log($"Controller found: {Controller.name}");
+            Controller.AttackPlayerAnim();
             Debug.Log("Enemy is attacking!");
             yield return new WaitForSeconds(cooldown);
-            SetColliderActive(false); //need to set a collider that will attack the player
-            IsAttacking = false;
+            //SetColliderActive(false); //need to set a collider that will attack the player
+            isAttacking = false;
         }
+        else
+        {
+            Debug.Log("No controller found");
+        }
+    }
+
+    public virtual void EnemySequence()
+    {
+        if (enemyHealth > 0)
+        {
+            for (int i = 1; i < 3; i++)
+            {
+                NormalAttack();
+            }
+        }
+    }
+
+    public virtual void NormalAttack()
+    {
+        Debug.Log("normal attack");
+    }
+
+    public virtual void SpecialAttack()
+    {
+        Debug.Log("special attack");
     }
 
     public void SetColliderActive(bool active)

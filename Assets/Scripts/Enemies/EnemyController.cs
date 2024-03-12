@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    Animator anim;
+
+    public void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     public void AttackPlayerAnim()
     {
-        // add here the attack aniamtion of the player
+        anim.SetTrigger("attack");
     }
 }
