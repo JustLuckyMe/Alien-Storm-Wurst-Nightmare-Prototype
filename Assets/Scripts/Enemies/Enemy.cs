@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
 
             if (distanceToPlayer <= attackRange && !isAttacking)
             {
-                StartCoroutine(PlayAttackAnimation());
+                //StartCoroutine(PlayAttackAnimation());
             }
             else
             {

@@ -12,10 +12,9 @@ public class CombatSystem : MonoBehaviour
     private bool isDrill;
 
 
-    public float nextFireTime = 2f;
     public static int noOfClicks = 0;
     float lastClickedTime = 0;
-    float maxComboDelay = 1;
+    [SerializeField] float maxComboDelay = 0.3f;
 
 
     // Start is called before the first frame update
