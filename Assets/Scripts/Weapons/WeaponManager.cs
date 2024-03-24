@@ -7,13 +7,12 @@ public class WeaponManager : MonoBehaviour
 {
     private GameObject currentWeapon;
 
-    [Header("Quick Access:")]
-    [SerializeField] private Transform spawnpoint;
-
     [Header("Weapons:")]
     [SerializeField] private GameObject DrillPrefab;
     [SerializeField] private GameObject HammerPrefab;
     [SerializeField] private GameObject GunPrefab;
+
+    private bool isWeaponLocked;
 
     public enum WeaponType
     {
@@ -51,8 +50,15 @@ public class WeaponManager : MonoBehaviour
 
     private void SwitchToNextWeapon()
     {
-        int nextIndex = ((int)currentWeaponType + 1) % System.Enum.GetValues(typeof(WeaponType)).Length;
-        SwitchWeapon((WeaponType)nextIndex);
+        if (isWeaponLocked)
+        {
+            int nextIndex = ((int)currentWeaponType + 1) % System.Enum.GetValues(typeof(WeaponType)).Length;
+            SwitchWeapon((WeaponType)nextIndex);
+        }
+        else
+        {
+            Debug.Log("Weapon is locked");
+        }
     }
 
     private void SwitchToPreviousWeapon()
